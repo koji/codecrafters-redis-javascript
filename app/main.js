@@ -12,7 +12,7 @@ const server = net.createServer((connection) => {
   //   // Handle connection
   connection.on('data', () => {
     // const returnValue = convertValue(data)
-    connection.writable(`POMG\r\n`)
+    connection.writable(`PONG\r\n`)
   })
 })
 //
