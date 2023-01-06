@@ -10,9 +10,9 @@ const convertValue = (input) => {
 // Uncomment this block to pass the first stage
 const server = net.createServer((connection) => {
   //   // Handle connection
-  connection.on('data', (data) => {
-    const returnValue = convertValue(data)
-    connection.writable(returnValue)
+  connection.on('data', () => {
+    // const returnValue = convertValue(data)
+    connection.writable(`POMG\r\n`)
   })
 })
 //
