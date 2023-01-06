@@ -4,15 +4,15 @@ const net = require("net");
 console.log("Logs from your program will appear here!");
 
 const convertValue = (input) => {
-  return `${input}\r\n`
+  return `+${input}\r\n`
 }
 
 // Uncomment this block to pass the first stage
 const server = net.createServer((connection) => {
   //   // Handle connection
   connection.on('data', () => {
-    // const returnValue = convertValue(data)
-    connection.writable(`PONG\r\n`)
+    const returnValue = convertValue(data)
+    connection.writable(returnValue)
   })
 })
 //
