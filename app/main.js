@@ -10,7 +10,7 @@ const convertValue = (input) => {
 // Uncomment this block to pass the first stage
 const server = net.createServer((connection) => {
   //   // Handle connection
-  connection.on('data', () => {
+  connection.on('data', (data) => {
     const returnValue = convertValue(data)
     connection.writable(returnValue)
   })
