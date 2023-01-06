@@ -4,7 +4,7 @@ const net = require("net");
 console.log("Logs from your program will appear here!");
 
 const convertValue = (input) => {
-  return `{input}\r\n`
+  return `${input}\r\n`
 }
 
 // Uncomment this block to pass the first stage
