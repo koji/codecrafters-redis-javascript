@@ -35,3 +35,6 @@ Note: This section is for stages 2 and beyond.
 
 # Stage 3
 In this stage, you'll respond to multiple PING commands sent by the same connection.
+
+# Stage 4
+In this stage, your server will need to handle multiple concurrent clients. Just like the previous stages, all clients will only send PING commands for now.
