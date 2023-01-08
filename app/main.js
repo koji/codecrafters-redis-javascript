@@ -14,6 +14,14 @@ const server = net.createServer((connection) => {
     // const returnValue = convertValue(data)
     connection.write(`+PONG\r\n`)
   })
+
+  connection.on('close', () => {
+    console.log('Connection closed')
+  })
+
+  connection.on('error', (err) => {
+    console.log('Connection error :', err)
+  })
 })
 //
 server.listen(6379, '127.0.0.1')
