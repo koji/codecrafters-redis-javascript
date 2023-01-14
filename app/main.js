@@ -4,7 +4,8 @@ const net = require("net");
 console.log("Logs from your program will appear here!");
 
 const convertValue = (input) => {
-  return `+${input}\r\n`
+  const value = input.toString()
+  return `+${value}\r\n`
 }
 
 const parseInput = (input) => {
@@ -24,17 +25,15 @@ const server = net.createServer((connection) => {
         connection.write(`+${input}\r\n`)
         return
       case 'PING':
-        connection.write(`+PONG\r\n`)
-        return
       default:
-        console.log('check your command')
+        connection.write(`+PONG\r\n`)
         return
     }
   })
 
-  // connection.on('close', () => {
-  //   console.log('Connection closed')
-  // })
+  connection.on('close', () => {
+    console.log('Connection closed')
+  })
 
   connection.on('error', (err) => {
     console.log('Connection error :', err)
