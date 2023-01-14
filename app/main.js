@@ -9,7 +9,7 @@ const convertValue = (input) => {
 
 const parseInput = (input) => {
   const convertedInput = input.toString()
-  const commands = input.split('\r\n')
+  const commands = convertedInput.split('\r\n')
   return { command: commands[2], input: commands[4] }
 }
 
