@@ -22,20 +22,19 @@ const server = net.createServer((connection) => {
     switch (command) {
       case 'ECHO':
         connection.write(`+${input}\r\n`)
-        break
+        return
       case 'PING':
         connection.write(`+PONG\r\n`)
-        break
+        return
       default:
         console.log('check your command')
-        break
+        return
     }
-    return
   })
 
-  connection.on('close', () => {
-    console.log('Connection closed')
-  })
+  // connection.on('close', () => {
+  //   console.log('Connection closed')
+  // })
 
   connection.on('error', (err) => {
     console.log('Connection error :', err)
