@@ -15,7 +15,7 @@ const parseInput = (input) => {
 // Uncomment this block to pass the first stage
 const server = net.createServer((connection) => {
   //   // Handle connection
-  connection.on('data', () => {
+  connection.on('data', (data) => {
     // const returnValue = convertValue(data)
     const { command, input } = parseInput(data)
     switch (command) {
