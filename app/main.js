@@ -20,11 +20,11 @@ const server = net.createServer((connection) => {
   connection.on('data', (data) => {
     // const returnValue = convertValue(data)
     const { command, input } = parseInput(data)
-    switch (command) {
-      case 'ECHO':
+    switch (command.toLowerCase()) {
+      case 'echo':
         connection.write(`+${input}\r\n`)
         return
-      case 'PING':
+      case 'pong':
       default:
         connection.write(`+PONG\r\n`)
         return
