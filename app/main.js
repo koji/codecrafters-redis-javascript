@@ -7,12 +7,28 @@ const convertValue = (input) => {
   return `+${input}\r\n`
 }
 
+const parseInput = (input) => {
+  const commands = input.split('\r\n')
+  return { command: commands[2], input: commands[4] }
+}
+
 // Uncomment this block to pass the first stage
 const server = net.createServer((connection) => {
   //   // Handle connection
   connection.on('data', () => {
     // const returnValue = convertValue(data)
-    connection.write(`+PONG\r\n`)
+    const { command, input } = parseInput(data)
+    switch (command) {
+      case 'ECHO':
+        connection.write(`+${input}\r\n`)
+        break
+      case 'PING':
+        connection.write(`+PONG\r\n`)
+        break
+      default:
+        console.log('check your command')
+        break
+    }
   })
 
   connection.on('close', () => {

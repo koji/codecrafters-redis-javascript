@@ -39,3 +39,9 @@ In this stage, you'll respond to multiple PING commands sent by the same connect
 # Stage 4
 In this stage, your server will need to handle multiple concurrent clients. Just like the previous stages, all clients will only send PING commands for now.
 
+# State 5
+In this stage, you'll respond to the ECHO command.
+
+The client will send you the command as a RESP array, which looks something like this:
+
+```*2\r\n$4\r\nECHO\r\n$3\r\nhey\r\n```
