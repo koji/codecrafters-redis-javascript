@@ -11,7 +11,7 @@ const convertValue = (input) => {
 const parseInput = (input) => {
   const convertedInput = input.toString()
   const commands = convertedInput.split('\r\n')
-  return { command: commands[2], input: commands[4] }
+  return { command: commands[2].toLowerCase(), input: commands[4] }
 }
 
 // Uncomment this block to pass the first stage
@@ -20,7 +20,7 @@ const server = net.createServer((connection) => {
   connection.on('data', (data) => {
     // const returnValue = convertValue(data)
     const { command, input } = parseInput(data)
-    switch (command.toLowerCase()) {
+    switch (command) {
       case 'echo':
         connection.write(`+${input}\r\n`)
         return
