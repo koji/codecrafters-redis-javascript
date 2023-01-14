@@ -32,13 +32,13 @@ const server = net.createServer((connection) => {
     }
   })
 
-  connection.on('close', () => {
-    console.log('Connection closed')
-  })
+  // connection.on('close', () => {
+  //   console.log('Connection closed')
+  // })
 
-  connection.on('error', (err) => {
-    console.log('Connection error :', err)
-  })
+  // connection.on('error', (err) => {
+  //   console.log('Connection error :', err)
+  // })
 })
 //
 server.listen(6379, '127.0.0.1')
