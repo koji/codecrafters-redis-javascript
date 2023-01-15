@@ -11,7 +11,11 @@ const convertValue = (input) => {
 const parseInput = (input) => {
   const convertedInput = input.toString()
   const commands = convertedInput.split('\r\n')
-  return { command: commands[2].toLowerCase(), input: commands[4] }
+  return {
+    command: commands[2].toLowerCase(),
+    key: commands[4],
+    value: commands[6],
+  }
 }
 
 // Uncomment this block to pass the first stage
@@ -19,11 +23,20 @@ const server = net.createServer((connection) => {
   //   // Handle connection
   connection.on('data', (data) => {
     // const returnValue = convertValue(data)
-    const { command, input } = parseInput(data)
+    const { command, input, value } = parseInput(data)
     switch (command) {
       case 'echo':
         connection.write(`+${input}\r\n`)
         return
+
+      case 'set':
+        connection.write(`+OK\r\n`)
+        return
+
+      case 'get':
+        const hashedKey = hash[input]
+        connection.write(`+${hashedKey}\r\n`)
+
       case 'pong':
       default:
         connection.write(`+PONG\r\n`)
