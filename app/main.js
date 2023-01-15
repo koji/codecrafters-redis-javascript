@@ -36,6 +36,7 @@ const server = net.createServer((connection) => {
       case 'get':
         const hashedKey = hash[input]
         connection.write(`+${hashedKey}\r\n`)
+        return
 
       case 'pong':
       default:
