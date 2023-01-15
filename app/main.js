@@ -16,7 +16,7 @@ const parseInput = (input) => {
   return {
     command: commands[2].toLowerCase(),
     key: commands[4],
-    value: commands[6],
+    value: commands[6] ?? '',
   }
 }
 
