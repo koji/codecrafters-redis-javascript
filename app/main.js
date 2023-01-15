@@ -34,8 +34,8 @@ const server = net.createServer((connection) => {
         return
 
       case 'get':
-        const hashedKey = hash[key]
-        connection.write(`+${hashedKey}\r\n`)
+        const storedKey = store[key] ? `+${store[key]}\r\n` : '$-1\r\n'
+        connection.write(`+${storedKey}\r\n`)
         return
 
       case 'pong':
