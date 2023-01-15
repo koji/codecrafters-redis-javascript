@@ -23,10 +23,10 @@ const server = net.createServer((connection) => {
   //   // Handle connection
   connection.on('data', (data) => {
     // const returnValue = convertValue(data)
-    const { command, input, value } = parseInput(data)
+    const { command, key, value } = parseInput(data)
     switch (command) {
       case 'echo':
-        connection.write(`+${input}\r\n`)
+        connection.write(`+${key}\r\n`)
         return
 
       case 'set':
@@ -34,7 +34,7 @@ const server = net.createServer((connection) => {
         return
 
       case 'get':
-        const hashedKey = hash[input]
+        const hashedKey = hash[key]
         connection.write(`+${hashedKey}\r\n`)
         return
 
